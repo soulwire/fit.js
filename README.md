@@ -59,7 +59,7 @@ You can also simply use one of the built in methods of transforming DOM elements
     fit( bar, foo, fit.cssPosition );
     
     // uses margin-left, margin-top, width and height
-    fit( bar, foo, fit.cssOffset );
+    fit( bar, foo, fit.cssMargin );
     
 But fit.js was designed to be used with any kind of rectangular object, not just DOM elements.
 
