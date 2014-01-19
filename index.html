@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Fit.js &raquo; Fit things into other things</title>
+        <link rel="stylesheet" href="styles/main.css">
+    </head>
+    <body>
+
+        <section class="about">
+
+            <header>
+                <hgroup>
+                    <h1>fit<em>.js</em></h1>
+                    <h2>fit( theThing, <em>/* into */</em> theOtherThing );</h2>
+                </hgroup>
+                <p class="links">
+                    <a href="#">Download</a>
+                    <a href="#">Source</a>
+                </p>
+            </header>
+
+            <a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0; width: 149px; height: 149px;" src="http://aral.github.com/fork-me-on-github-retina-ribbons/right-graphite@2x.png" alt="Fork me on GitHub"></a>
+
+            <span class="down">&#x25BD;</span>
+            
+        </section>
+
+        <section class="examples">
+
+            <article class="example">
+                <div class="content">
+                    <div class="foo">
+                        <div class="bar"></div>
+                    </div>
+                    <div class="info">
+                        <h2>The basics</h2>
+                        <pre class="code">
+                            fit( bar, foo );
+                        </pre>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="example">
+                <div class="content">
+                    <div class="foo">
+                        <div class="bar"></div>
+                    </div>
+                    <div class="info">
+                        <h2>Cover area</h2>
+                        <pre class="code">
+                            fit( bar, foo, { cover: true } );
+                        </pre>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="example">
+                <div class="content">
+                    <div class="foo">
+                        <div class="bar"></div>
+                    </div>
+                    <div class="info">
+                        <h2>Horizontal Align</h2>
+                        <pre class="code">
+                            fit( bar, foo, { hAlign: fit.RIGHT } );
+                        </pre>
+                    </div>
+                </div>
+            </article>
+
+            <article class="example">
+                <div class="content">
+                    <div class="foo">
+                        <div class="bar landscape"></div>
+                    </div>
+                    <div class="info">
+                        <h2>Vertical Align</h2>
+                        <pre class="code">
+                            fit( bar, foo, { vAlign: fit.TOP } );
+                        </pre>
+                    </div>
+                </div>
+            </article>
+
+            <article class="explain">
+                <h2>Configuration</h2>
+                <p>You can pass options as a 3<sup>rd</sup> parameter.</p>
+                <p>Here are the default values and what each parameter means&hellip;</p>
+                <pre class="code">
+                    fit( bar, foo, {
+                        
+                        // Alignment
+                        hAlign: fit.CENTER, // or fit.LEFT, fit.RIGHT
+                        vAlign: fit.CENTER, // or fit.TOP, fit.BOTTOM
+                        
+                        // Fit within the area or fill it all (true)
+                        cover: false,
+                        
+                        // Apply computed transformations (true) or just
+                        // return the transformation definition (false)
+                        apply: true
+                    });
+                </pre>
+            </article>
+
+            <article class="explain">
+                <h2>Callback</h2>
+                <p>You can pass a callback as the 3<sup>rd</sup> or 4<sup>th</sup> parameter.</p>
+                <p>Use it, or the returned object, to apply the computed transform in whatever way you want&hellip;</p>
+                <pre class="code">
+                    fit( bar, foo, function( transform ) {
+                        bar.x += transform.tx;
+                        bar.y += transform.ty;
+                        bar.width *= transform.scale;
+                        bar.height *= transform.scale;
+                    });
+                </pre>
+                <p>You can also pass <code>fit.cssTransform</code>, <code>fit.cssPosition</code> or <code>fit.cssOffset</code></p>
+                <pre class="code">
+                    fit( bar, foo, fit.cssPosition );
+                </pre>
+            </article>
+
+            <article class="example">
+                <div class="content">
+                    <div class="foo">
+                        <div class="bar text">Fit.js</div>
+                    </div>
+                    <div class="info">
+                        <h2>Custom Transforms</h2>
+                        <h3>Fit uses CSS3 transforms by default, but you can transform the element however you want, for example&hellip;</h3>
+                        <pre class="code small">
+                            fit( bar, foo, function( transform ) {
+                                var style = window.getComputedStyle( bar );
+                                var size = parseFloat( style.fontSize );
+                                var top = parseFloat( style.marginTop );
+                                bar.style.marginTop = top + transform.ty + 'px';
+                                bar.style.fontSize = size * transform.scale + 'px';
+                            });
+                        </pre>
+                    </div>
+                </div>
+            </article>
+            
+        </section>
+        <footer class="footer">
+            <p>fit.js is on <a href="#">Github</a></p>
+        </footer>
+        <script src="fit.js"></script>
+        <script src="scripts/main.js"></script>
+    </body>
+</html>
