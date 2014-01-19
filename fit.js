@@ -1,4 +1,4 @@
-/* Copyright (C) 2013 Justin Windle, http://soulwire.co.uk */
+/* Copyright (C) 2014 Justin Windle, http://soulwire.co.uk */
 
 var fit = (function() {
 
