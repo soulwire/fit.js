@@ -99,10 +99,19 @@
                         // Fit within the area or fill it all (true)
                         cover: false,
                         
+                        // Fit again automatically on window resize
+                        watch: false,
+                        
                         // Apply computed transformations (true) or just
                         // return the transformation definition (false)
                         apply: true
                     });
+                </pre>
+                <p>You can change the options globally if you like too, by modifying the <code>defaults</code> object</p>
+                <pre class="code">
+                    fit.defaults.vAlign = fit.TOP;
+                    fit.defaults.watch = true;
+                    fit.defaults.cover = true;
                 </pre>
             </article>
 
@@ -143,6 +152,25 @@
                         </pre>
                     </div>
                 </div>
+            </article>
+
+            <article class="explain">
+                <h2>Watching</h2>
+                <p>If you set the <code>watch</code> option to true, fit will trigger automatically on window resize.</p>
+                <p>You can turn watching on or off at any time and manually trigger repeat fits.</p>
+                <pre class="code">
+                    // This will trigger a fit each time the window resizes
+                    var watching = fit( bar, foo, { watch: true } );
+                    
+                    // You can stop watching at any time
+                    watching.off();
+                    
+                    // And start watching again
+                    watching.on();
+                    
+                    // And trigger a fit manually too
+                    watching.trigger();
+                </pre>
             </article>
             
         </section>
