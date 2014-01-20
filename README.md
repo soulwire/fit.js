@@ -34,6 +34,9 @@ or any combination of the options below
         
         // Fit within the area or fill it all (true)
         cover: false,
+
+        // Fit again automatically on window resize
+        watch: false,
         
         // Apply computed transformations (true) or just
         // return the transformation definition (false)
