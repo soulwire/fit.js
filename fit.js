@@ -33,7 +33,16 @@ var fit = (function() {
     var win = window || self;
     var doc = document;
     var getStyle = win.getComputedStyle;
+    var watching = [];
     var vendor;
+
+    var defaults = {
+        hAlign: CENTER,
+        vAlign: CENTER,
+        watch: false,
+        cover: false,
+        apply: true
+    };
 
     /*
     ————————————————————————————————————————————————————————————————————————————————
@@ -208,33 +217,27 @@ var fit = (function() {
     /*
     ————————————————————————————————————————————————————————————————————————————————
     
+        Event Handlers
+    
+    ————————————————————————————————————————————————————————————————————————————————
+    */
+
+    function onWindowResize() {
+
+        for ( var i = 0, n = watching.length; i < n; i++ )
+
+            watching[ i ]();
+    }
+
+    /*
+    ————————————————————————————————————————————————————————————————————————————————
+    
         Fit
     
     ————————————————————————————————————————————————————————————————————————————————
     */
 
-    function fit( target, container, options, callback ) {
-
-        // Parse arguments
-
-        if ( !target || !container )
-
-            throw 'You must supply a target and a container';
-
-        if ( typeof options === 'function' ) {
-
-            callback = options;
-            options = {};
-        }
-
-        // Default options
-
-        options = extend( options || {}, {
-            hAlign: CENTER,
-            vAlign: CENTER,
-            cover: false,
-            apply: true
-        });
+    function fit( target, container, options, callback, transform ) {
 
         // Normalise inputs to standard rectangle definitions
 
@@ -265,21 +268,20 @@ var fit = (function() {
         var tx = options.hAlign == CENTER ? 0.5 * ( w - wb ) : options.hAlign == RIGHT ? w - wb : 0.0;
         var ty = options.vAlign == CENTER ? 0.5 * ( h - hb ) : options.vAlign == BOTTOM ? h - hb : 0.0;
 
-        // Build transform object
+        // Build / modify transform object
 
-        var transform = {
+        transform = transform || {};
                 
-            tx: ( area.x - tx ) - rect.x,
-            ty: ( area.y - ty ) - rect.y,
+        transform.tx = ( area.x - tx ) - rect.x;
+        transform.ty = ( area.y - ty ) - rect.y;
             
-            x: ( area.x - tx ) - rect.x * scale,
-            y: ( area.y - ty ) - rect.y * scale,
+        transform.x = ( area.x - tx ) - rect.x * scale;
+        transform.y = ( area.y - ty ) - rect.y * scale;
             
-            height: rect.height * scale,
-            width: rect.width * scale,
+        transform.height = rect.height * scale;
+        transform.width = rect.width * scale;
 
-            scale: scale
-        };
+        transform.scale = scale;
 
         // Apply default transform
 
@@ -303,6 +305,69 @@ var fit = (function() {
         return transform;
     }
 
+    function main( target, container, options, callback ) {
+
+        // Parse arguments
+
+        if ( !target || !container )
+
+            throw 'You must supply a target and a container';
+
+        if ( typeof options === 'function' ) {
+
+            callback = options;
+            options = {};
+        }
+
+        // Default options
+
+        options = extend( options || {}, defaults );
+
+        // Do it
+
+        var transform = fit( target, container, options, callback );
+
+        // Optionally handle window resizes automatically
+
+        if ( options.watch ) {
+
+            if ( !watching.length )
+
+                win.addEventListener( 'resize', onWindowResize );
+
+            transform.trigger = function() {
+
+                fit( target, container, options, callback, transform );
+            }
+
+            transform.on = function( suppress ) {
+
+                var index = watching.indexOf( transform.trigger );
+
+                if ( !~index )
+
+                    watching.push( transform.trigger );
+
+                if ( !suppress )
+
+                    transform.trigger();
+            }
+
+            transform.off = function() {
+
+                var index = watching.indexOf( transform.trigger );
+
+                if ( !!~index )
+
+                    watching.splice( index, 1 );
+            };
+
+            transform.on( true );
+        }
+
+        return transform;
+    }
+
     /*
     ————————————————————————————————————————————————————————————————————————————————
     
@@ -311,7 +376,12 @@ var fit = (function() {
     ————————————————————————————————————————————————————————————————————————————————
     */
 
-    return extend( fit, {
+    return extend( main, {
+
+        // Properties
+
+        watching: watching,
+        defaults: defaults,
 
         // Methods
 
