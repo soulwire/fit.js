@@ -61,11 +61,25 @@ You can also simply use one of the built in methods of transforming DOM elements
     // uses margin-left, margin-top, width and height
     fit( bar, foo, fit.cssMargin );
     
-But fit.js was designed to be used with any kind of rectangular object, not just DOM elements.
+But fit.js was designed to be used with any kind of rectangular object, not just DOM elements
 
     var area = { x: 20, y: 20, width: 400, height: 300 };
     var rect = { x: 0, y: 0, width: 100, height: 120 };
     fit( rect, area );
+    
+If you are using the DOM, you can tell fit to run again whenever the window resizes. To do this, simply set the `watch` option to `true`
+
+    // This will trigger a fit each time the window resizes
+    var watching = fit( bar, foo, { watch: true } );
+    
+    // You can stop watching at any time
+    watching.off();
+    
+    // And start watching again
+    watching.on();
+    
+    // And trigger a fit manually too
+    watching.trigger();
     
 For some visual examples, check out the [demo page](http://soulwire.github.io/fit.js/).
 
