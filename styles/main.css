@@ -3,6 +3,30 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
 @import url(http://fonts.googleapis.com/css?family=PT+Mono);
 
+@-webkit-keyframes hover {
+    0% { -webkit-transform: translate( 0, 0 ); }
+    50% { -webkit-transform: translate( 0, 20px ); }
+    100% { -webkit-transform: translate( 0, 0 ); }
+}
+
+@-moz-keyframes hover {
+    0% { -webkit-transform: translate( 0, 0 ); }
+    50% { -webkit-transform: translate( 0, 20px ); }
+    100% { -webkit-transform: translate( 0, 0 ); }
+}
+
+@-o-keyframes hover {
+    0% { -webkit-transform: translate( 0, 0 ); }
+    50% { -webkit-transform: translate( 0, 20px ); }
+    100% { -webkit-transform: translate( 0, 0 ); }
+}
+
+@keyframes hover {
+    0% { -webkit-transform: translate( 0, 0 ); }
+    50% { -webkit-transform: translate( 0, 20px ); }
+    100% { -webkit-transform: translate( 0, 0 ); }
+}
+
 html, body {
     font-family: 'Lato', sans-serif;
     text-align: center;
@@ -28,7 +52,7 @@ html, body {
 .about header {
     position: absolute;
     width: 100%;
-    top: 28%;
+    top: 26%;
 }
 
 .about h1 {
@@ -76,9 +100,19 @@ html, body {
     -moz-transition: opacity 0.33s ease-out;
     -ms-transition: opacity 0.33s ease-out;
     -o-transition: opacity 0.33s ease-out;
+    -webkit-animation: hover 1.5s infinite;
+    -moz-animation: hover 1.5s infinite;
+    -o-animation: hover 1.5s infinite;
+    animation: hover 1.5s infinite;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-left: -50px;
+    line-height: 20px;
+    font-size: 12px;
     position: absolute;
-    bottom: 50px;
-    color: #ccc;
+    bottom: 100px;
+    width: 100px;
+    color: #000;
 }
 
 a {
