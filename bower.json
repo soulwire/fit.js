@@ -1,0 +1,22 @@
+{
+  "name": "fit.js",
+  "main": "fit.js",
+  "version": "0.1.0",
+  "homepage": "http://soulwire.github.io/fit.js/",
+  "authors": [
+    "Justin Windle <justin@soulwire.co.uk>"
+  ],
+  "description": "Fit things into other things",
+  "keywords": [
+    "fit",
+    "things"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
