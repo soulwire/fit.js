@@ -14,7 +14,7 @@ window.onload = function() {
     var examples = document.querySelectorAll( '.example' );
     var codes = document.querySelectorAll( '.code' );
     var down = document.querySelector( '.down' );
-    var i, n, el, code, func, foo, bar, indent, regex, top = true;
+    var i, n, j, m, el, code, func, foo, bar, indent, regex, top = true;
 
     // Format code
 
@@ -43,14 +43,17 @@ window.onload = function() {
 
         el = examples[i];
 
-        code = el.querySelector( 'pre' );
-        func = new Function( 'foo', 'bar', code.textContent );
-
+        code = el.querySelectorAll( 'pre' );
         foo = el.querySelector( '.foo' );
         bar = el.querySelector( '.bar' );
 
+        for ( j = 0, m = code.length; j < m; j++ ) {
+
+            func = new Function( 'foo', 'bar', code[ j ].textContent );
+            func( foo, bar );
+        }
+
         bar.style.backgroundColor = bar.style.color = COLORS[ i % COLORS.length ];
-        func( foo, bar );
     }
 
     window.addEventListener( 'scroll', function() {
