@@ -12,6 +12,7 @@ var fit = (function() {
     ————————————————————————————————————————————————————————————————————————————————
     */
 
+    var THROTTLE_DURATION = 50;
     var TRANSFORM_ORIGIN = 'TransformOrigin';
     var TRANSFORM = 'Transform';
     var VENDORS = 'moz ms o webkit'.split( ' ' );
@@ -35,6 +36,8 @@ var fit = (function() {
     var getStyle = win.getComputedStyle;
     var watching = [];
     var vendor;
+    var then;
+    var wait;
 
     var defaults = {
         hAlign: CENTER,
@@ -64,6 +67,13 @@ var fit = (function() {
     function isNumber( value ) {
 
         return typeof value === 'number' && !isNaN( value );
+    }
+
+    // Shortcut to get the current time
+
+    function getTime() {
+
+        return new Date().getTime();
     }
 
     // Simple array mapping method (for non-ES5 browsers)
@@ -152,7 +162,7 @@ var fit = (function() {
         matrix[4] += transform.tx;
         matrix[5] += transform.ty;
 
-        var fixed = map( matrix, function( n ) { return n.toFixed( 6 ); })
+        var fixed = map( matrix, function( n ) { return n.toFixed( 6 ); });
 
         element.style[ prefix( TRANSFORM_ORIGIN ) ] = '0 0';
         element.style[ prefix( TRANSFORM ) ] = 'matrix(' + fixed.join( ',' ) + ')';
@@ -239,9 +249,24 @@ var fit = (function() {
 
     function onWindowResize() {
 
-        for ( var i = 0, n = watching.length; i < n; i++ )
+        // Throttle
 
-            watching[ i ]();
+        var now = getTime();
+        var delta = now - then;
+
+        if ( delta <= THROTTLE_DURATION ) {
+
+            clearInterval( wait );
+            wait = setTimeout( onWindowResize, THROTTLE_DURATION - delta );
+
+        } else {
+
+            for ( var i = 0, n = watching.length; i < n; i++ )
+
+                watching[ i ]();
+
+            then = now;
+        }
     }
 
     /*
@@ -353,7 +378,7 @@ var fit = (function() {
             transform.trigger = function() {
 
                 fit( target, container, options, callback, transform );
-            }
+            };
 
             transform.on = function( suppress ) {
 
@@ -366,7 +391,7 @@ var fit = (function() {
                 if ( !suppress )
 
                     transform.trigger();
-            }
+            };
 
             transform.off = function() {
 
