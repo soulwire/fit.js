@@ -66,6 +66,19 @@ var fit = (function() {
         return typeof value === 'number' && !isNaN( value );
     }
 
+    // Simple array mapping method (for non-ES5 browsers)
+
+    function map( list, func ) {
+
+        var out = [];
+
+        for ( var i = 0, n = list.length; i < n; i++ )
+
+            out[ i ] = func( list[ i ] );
+
+        return out;
+    }
+
     // Soft object augmentation
 
     function extend( target, source ) {
@@ -139,8 +152,10 @@ var fit = (function() {
         matrix[4] += transform.tx;
         matrix[5] += transform.ty;
 
+        var fixed = map( matrix, function( n ) { return n.toFixed( 6 ); })
+
         element.style[ prefix( TRANSFORM_ORIGIN ) ] = '0 0';
-        element.style[ prefix( TRANSFORM ) ] = 'matrix(' + matrix.join( ',' ) + ')';
+        element.style[ prefix( TRANSFORM ) ] = 'matrix(' + fixed.join( ',' ) + ')';
     }
 
     function cssPosition( transform, element ) {
