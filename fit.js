@@ -152,7 +152,7 @@ var fit = (function() {
         matrix[4] += transform.tx;
         matrix[5] += transform.ty;
 
-        var fixed = map( matrix, function( n ) { return n.toFixed( 6 ); })
+        var fixed = map( matrix, function( n ) { return n.toFixed( 6 ); });
 
         element.style[ prefix( TRANSFORM_ORIGIN ) ] = '0 0';
         element.style[ prefix( TRANSFORM ) ] = 'matrix(' + fixed.join( ',' ) + ')';
@@ -353,7 +353,7 @@ var fit = (function() {
             transform.trigger = function() {
 
                 fit( target, container, options, callback, transform );
-            }
+            };
 
             transform.on = function( suppress ) {
 
@@ -366,7 +366,7 @@ var fit = (function() {
                 if ( !suppress )
 
                     transform.trigger();
-            }
+            };
 
             transform.off = function() {
 
