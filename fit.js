@@ -145,6 +145,17 @@ var fit = (function() {
         return ctm;
     }
 
+    if(!Array.prototype.indexOf){
+        Array.prototype.indexOf = function(thing){
+            for(var i=0;i<this.length;++i){
+                if(this[i] == thing){
+                    return i;
+                }
+            }
+            return -1;
+        }
+    }
+
     /*
     ————————————————————————————————————————————————————————————————————————————————
     
@@ -216,7 +227,7 @@ var fit = (function() {
 
     function toRectangle( target ) {
 
-        if ( target instanceof HTMLElement ) {
+        if ( target.nodeType && target.nodeType == 1 ) {
 
             var bounds = target.getBoundingClientRect();
             
@@ -331,7 +342,7 @@ var fit = (function() {
 
         else if ( options.apply ) {
 
-            if ( target instanceof HTMLElement )
+            if (typeof(HTMLElement) != 'undefined' && target instanceof HTMLElement )
 
                 callback = cssTransform;
 
@@ -371,9 +382,15 @@ var fit = (function() {
 
         if ( options.watch ) {
 
-            if ( !watching.length )
+            if ( !watching.length ){
 
-                win.addEventListener( 'resize', onWindowResize );
+                if(win.addEventListener){
+                    win.addEventListener( 'resize', onWindowResize );
+                }else{
+                    win.attachEvent( 'onresize', onWindowResize );
+                }
+
+            }
 
             transform.trigger = function() {
 
