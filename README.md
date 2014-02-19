@@ -45,7 +45,7 @@ or any combination of the options below
 
 You can also pass a callback and use this to transform `bar` in whatever way you wish. The callback is passed a `transform` object that contains all the information you should need.
 
-Here's an example that sets the font size of `bar` such that it fills `foo`
+Here's an example of fitting text by setting the font size of `bar` such that it fills `foo`
 
     fit( bar, foo, function( transform ) {
         var style = window.getComputedStyle( bar );
