@@ -92,6 +92,6 @@ Sometimes, the standard CSS properties just can't manipulate elements to fit in 
 
 ### Appendix
     
-If you contribute to the script (thanks!) then generate a minified version like so (assuming you have installed [uglifyjs](http://lisperator.net/uglifyjs/).
+If you contribute to the script (thanks!) then generate a minified version like so (assuming you have installed [uglifyjs](http://lisperator.net/uglifyjs/)):
 
     uglifyjs fit.js --comments /copy/i -cmo fit.min.js
