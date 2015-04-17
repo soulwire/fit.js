@@ -4,6 +4,9 @@
     
 Fit.js has a very simple purpose and that is to help you fit _things_ into other _things_. The concept it probably best illustrated by the [demo page](http://soulwire.github.io/fit.js/).
 
+#### __tl;dr__ [Here's a fiddle](http://jsfiddle.net/soulwire/s8zb1fdf/) showing how to use it.
+- - -
+
 Here are a few simple examples, that should be quite self explanatory.
 
 Given some markup:
