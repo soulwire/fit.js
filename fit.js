@@ -145,13 +145,14 @@ var fit = (function() {
         return ctm;
     }
 
-    if(!Array.prototype.indexOf){
-        Array.prototype.indexOf = function(thing){
-            for(var i=0;i<this.length;++i){
-                if(this[i] == thing){
-                    return i;
-                }
-            }
+    if( !Array.prototype.indexOf ){
+
+        Array.prototype.indexOf = function( object ) {
+            
+            for( var i = 0; i < this.length; ++i )
+
+                if( this[i] == object ) return i
+
             return -1;
         }
     }
@@ -245,7 +246,7 @@ var fit = (function() {
 
         if ( !isNumber( target.y ) && isNumber( target.top ) )
 
-            target.x = target.top;
+            target.y = target.top;
 
         return target;
     }
