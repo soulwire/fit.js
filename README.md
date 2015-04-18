@@ -4,6 +4,9 @@
     
 Fit.js has a very simple purpose and that is to help you fit _things_ into other _things_. The concept it probably best illustrated by the [demo page](http://soulwire.github.io/fit.js/).
 
+#### __tl;dr__ [Here's a fiddle](http://jsfiddle.net/soulwire/s8zb1fdf/) showing how to use it.
+- - -
+
 Here are a few simple examples, that should be quite self explanatory.
 
 Given some markup:
@@ -45,7 +48,7 @@ or any combination of the options below
 
 You can also pass a callback and use this to transform `bar` in whatever way you wish. The callback is passed a `transform` object that contains all the information you should need.
 
-Here's an example that sets the font size of `bar` such that it fills `foo`
+Here's an example of fitting text by setting the font size of `bar` such that it fills `foo`
 
     fit( bar, foo, function( transform ) {
         var style = window.getComputedStyle( bar );
@@ -92,6 +95,6 @@ Sometimes, the standard CSS properties just can't manipulate elements to fit in 
 
 ### Appendix
     
-If you contribute to the script (thanks!) then generate a minified version like so (assuming you have installed [uglifyjs](http://lisperator.net/uglifyjs/).
+If you contribute to the script (thanks!) then generate a minified version like so (assuming you have installed [uglifyjs](http://lisperator.net/uglifyjs/)):
 
     uglifyjs fit.js --comments /copy/i -cmo fit.min.js
