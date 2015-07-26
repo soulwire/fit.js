@@ -133,18 +133,16 @@ var fit = (function() {
 
         var css = getStyle( el );
         var ctm = css[ prefix( TRANSFORM ) ].replace( /[a-z()]/gi, '' ).split( ',' );
-        var matrix = [];
 
         if ( ctm.length < 6 )
 
-            matrix = [ 1, 0, 0, 1, 0, 0 ];
+            return [ 1, 0, 0, 1, 0, 0 ];
 
         for ( var i = 0; i < 6; i++ )
 
-            matrix.push(parseFloat( ctm[i] ));
+            ctm[i] = parseFloat( ctm[i] );
 
-        return matrix;
-        
+        return ctm;
     }
 
     if( !Array.prototype.indexOf ){
