@@ -1,0 +1,8 @@
+{
+  "name": "fit.js",
+  "version": "1.0.0",
+  "description": "Fit things into other things",
+  "main": "fit.js",
+  "author": "Justin Windle <justin@soulwire.co.uk>",
+  "license": "MIT"
+}
