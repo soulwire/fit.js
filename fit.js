@@ -459,4 +459,9 @@ var fit = (function() {
 
 })();
 
-module.exports = fit;
+if( typeof exports !== 'undefined' ) {
+    if( typeof module !== 'undefined' && module.exports ) {
+        exports = module.exports = fit;
+    }
+    exports.fit = fit;
+}
