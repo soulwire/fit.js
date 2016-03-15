@@ -458,3 +458,5 @@ var fit = (function() {
     });
 
 })();
+
+module.exports = fit;
