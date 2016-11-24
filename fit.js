@@ -307,6 +307,7 @@ var fit = (function() {
         var area = toRectangle(container);
 
         // Compute position offset and scale 
+        
         // if width / height values are 0, assign last saved value
         var wa = rect.width === 0 ? lastSavedRectWidth : rect.width;
         var ha = rect.height === 0 ? lastSavedAreaHeight : rect.height;
