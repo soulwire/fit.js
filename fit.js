@@ -302,6 +302,7 @@ var fit = (function() {
     function fit(target, container, options, callback, transform) {
 
         // Normalise inputs to standard rectangle definitions
+        
         var rect = toRectangle(target);
         var area = toRectangle(container);
 
@@ -318,7 +319,6 @@ var fit = (function() {
         lastSavedRectHeight = ha;
         lastSavedAreaWidth = wb;
         lastSavedAreaHeight = hb;
-
 
         var sx = wb / wa;
         var sy = hb / ha;
