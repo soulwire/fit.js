@@ -288,6 +288,14 @@ var fit = (function() {
     
     ————————————————————————————————————————————————————————————————————————————————
     */
+    
+    // Cache last saved value to prevent 'NaN' values 
+    // when calculating transform.scale 
+    
+    var lastSavedRectWidth,
+        lastSavedRectHeight, 
+        lastSavedAreaWidth, 
+        lastSavedAreaHeight;
 
     function fit( target, container, options, callback, transform ) {
 
@@ -297,12 +305,17 @@ var fit = (function() {
         var area = toRectangle( container );
 
         // Compute position offset and scale
-
-        var wa = rect.width;
-        var ha = rect.height;
         
-        var wb = area.width;
-        var hb = area.height;
+        var wa = rect.width === 0 ? lastSavedRectWidth : rect.width;
+        var ha = rect.height === 0 ? lastSavedAreaHeight : rect.height;
+        
+        var wb = area.width === 0 ? lastSavedAreaWidth : area.width;
+        var hb = area.height === 0 ? lastSavedAreaHeight : area.height;
+
+        lastSavedRectWidth = wa;
+        lastSavedRectHeight = ha;
+        lastSavedAreaWidth = wb;
+        lastSavedAreaHeight = hb;
         
         var sx = wb / wa;
         var sy = hb / ha;
