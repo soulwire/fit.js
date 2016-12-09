@@ -1,0 +1,237 @@
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300&text=fit.js);
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
+@import url(http://fonts.googleapis.com/css?family=PT+Mono);
+
+@-webkit-keyframes hover {
+    0% { -webkit-transform: translate( 0, 0 ); }
+    50% { -webkit-transform: translate( 0, 20px ); }
+    100% { -webkit-transform: translate( 0, 0 ); }
+}
+
+@-moz-keyframes hover {
+    0% { -webkit-transform: translate( 0, 0 ); }
+    50% { -webkit-transform: translate( 0, 20px ); }
+    100% { -webkit-transform: translate( 0, 0 ); }
+}
+
+@-o-keyframes hover {
+    0% { -webkit-transform: translate( 0, 0 ); }
+    50% { -webkit-transform: translate( 0, 20px ); }
+    100% { -webkit-transform: translate( 0, 0 ); }
+}
+
+@keyframes hover {
+    0% { -webkit-transform: translate( 0, 0 ); }
+    50% { -webkit-transform: translate( 0, 20px ); }
+    100% { -webkit-transform: translate( 0, 0 ); }
+}
+
+html, body {
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    height: 100%;
+    margin: 0;
+}
+
+.footer {
+    font-weight: 300;
+    background: #222;
+    padding: 80px 0;
+    color: #fff;
+}
+
+/* About */
+
+.about {
+    position: relative;
+    margin: 0 0 20px 0;
+    height: 100%;
+}
+
+.about header {
+    position: absolute;
+    width: 100%;
+    top: 26%;
+}
+
+.about h1 {
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: -5px;
+    font-weight: 400;
+    font-size: 165px;
+    margin: 0 0 10px 0;
+}
+
+.about h1 em {
+    letter-spacing: -2px;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 92px;
+}
+
+.about h2 {
+    letter-spacing: -1px;
+    font-family: 'PT Mono', sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    margin: 0;
+}
+
+.about h2 em {
+    letter-spacing: -2px;
+    font-style: normal;
+    font-weight: 100;
+    margin: 0 5px;
+    opacity: 0.5;
+}
+
+.about .links {
+    margin-top: 40px;
+}
+
+.about .links a {
+    margin: 0 15px;
+}
+
+.about .down {
+    -webkit-transition: opacity 0.33s ease-out;
+    -moz-transition: opacity 0.33s ease-out;
+    -ms-transition: opacity 0.33s ease-out;
+    -o-transition: opacity 0.33s ease-out;
+    -webkit-animation: hover 1.5s infinite;
+    -moz-animation: hover 1.5s infinite;
+    -o-animation: hover 1.5s infinite;
+    animation: hover 1.5s infinite;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-left: -50px;
+    line-height: 20px;
+    font-size: 12px;
+    position: absolute;
+    bottom: 100px;
+    width: 100px;
+    color: #000;
+}
+
+a {
+    text-decoration: none;
+    color: #FF1B79;
+}
+
+/* Examples */
+
+article {
+    border-bottom: 1px dashed #dadadd;
+    padding: 80px 0;
+}
+
+article:first-child {
+    padding-top: 0;
+}
+
+article .content {
+    overflow: hidden;
+    margin: 0 auto;
+    width: 940px;
+}
+
+article h2, article h3, article p {
+    font-weight: 300;
+    margin: 0 45px;
+    color: #111;
+}
+
+article code {
+    font-family: 'PT Mono', sans-serif;
+    font-size: 15px;
+}
+
+article h2 {
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    font-size: 28px;
+}
+
+article h3, article p {
+    line-height: 1.25;
+    font-size: 18px;
+}
+
+article .code {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+article .code .comment {
+    opacity: 0.5;
+}
+
+.example .foo {
+    background: #F9FAFD url( ../images/light.png );
+    position: relative;
+    height: 300px;
+    width: 42%;
+    float: left;
+}
+
+.example .bar {
+    background: url( ../images/dark.png );
+    height: 350px;
+    width: 200px;
+}
+
+.example .bar.landscape {
+    height: 200px;
+    width: 420px;
+}
+
+.example .bar.text {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    white-space: nowrap;
+    font-weight: 400;
+    line-height: 1.5;
+    background: transparent !important;
+    display: inline-block;
+    height: auto;
+    width: auto;
+    color: #333;
+}
+
+.example .info {
+    text-align: left;
+    float: right;
+    width: 58%;
+}
+
+.explain .code {
+    border-radius: 5px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 30px;
+    background: #F9FAFD;
+    padding: 20px;
+    width: 650px;
+}
+
+/* Code */
+
+.code {
+    font-family: 'PT Mono', sans-serif;
+    white-space: pre-wrap;
+    line-height: 1.35;
+    text-align: left;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin: 25px 0 0 45px;
+    color: #333;
+}
+
+.code.big {
+    font-size: 18px;
+}
+
+.code.small {
+    font-size: 15px;
+}
