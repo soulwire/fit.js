@@ -399,9 +399,11 @@ var fit = (function() {
             if ( !watching.length ){
 
                 if(win.addEventListener){
-                    win.addEventListener( 'resize orientationchange', onWindowResize );
+                    win.addEventListener( 'resize', onWindowResize );
+                    win.addEventListener( 'orientationchange', onWindowResize );
                 }else{
-                    win.attachEvent( 'onresize onorientationchange', onWindowResize );
+                    win.attachEvent( 'onresize', onWindowResize );
+                    win.attachEvent( 'onorientationchange', onWindowResize );
                 }
 
             }
