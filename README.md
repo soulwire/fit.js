@@ -20,6 +20,8 @@ Given some markup:
 You might want to fit `bar` into `foo` whilst maintaining its original aspect ratio.
 
 ```js
+    let foo = document.querySelector('.foo');
+    let bar = document.querySelector('.bar');
     fit( bar, foo );
 ```
 
