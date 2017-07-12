@@ -400,8 +400,10 @@ var fit = (function() {
 
                 if(win.addEventListener){
                     win.addEventListener( 'resize', onWindowResize );
+                    win.addEventListener( 'orientationchange', onWindowResize );
                 }else{
                     win.attachEvent( 'onresize', onWindowResize );
+                    win.attachEvent( 'onorientationchange', onWindowResize );
                 }
 
             }
