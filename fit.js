@@ -138,10 +138,10 @@ var fit = (function() {
 
             return [ 1, 0, 0, 1, 0, 0 ];
 
-        for ( var i = 0; i < 6; i++ )
-
-            ctm[i] = parseFloat( ctm[i] );
-
+        for ( var i = 0; i < 16; i++ ){
+            if (i < ctm.length)
+                ctm[i] = parseFloat( ctm[i] );
+        }
         return ctm;
     }
 
