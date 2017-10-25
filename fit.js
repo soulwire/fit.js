@@ -138,10 +138,11 @@ var fit = (function() {
 
             return [ 1, 0, 0, 1, 0, 0 ];
 
-        for ( var i = 0; i < 6; i++ )
-
-            ctm[i] = parseFloat( ctm[i] );
-
+        for ( var i = 0; i < 16; i++ ){
+            if (i < ctm.length)
+                ctm[i] = parseFloat( ctm[i] );
+        }
+      
         return ctm;
     }
 
@@ -174,8 +175,9 @@ var fit = (function() {
         matrix[4] += transform.tx;
         matrix[5] += transform.ty;
 
-        var fixed = map( matrix, function( n ) { return n.toFixed( 6 ); });
+        var fixed = map( matrix, function( n ) { return n.toFixed( 6 ); }).slice(0,6);
 
+       
         element.style[ prefix( TRANSFORM_ORIGIN ) ] = '0 0';
         element.style[ prefix( TRANSFORM ) ] = 'matrix(' + fixed.join( ',' ) + ')';
     }
